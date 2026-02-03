@@ -1,16 +1,19 @@
 import { ArrowRight } from 'lucide-react';
+import heroBackground from '@/assets/hero-background.jpg';
 
 const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center pt-20 bg-gradient-to-br from-secondary via-background to-secondary overflow-hidden"
+      className="relative min-h-screen flex items-center pt-20 overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-2xl" />
-      </div>
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackground})` }}
+      />
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/60" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
@@ -26,7 +29,7 @@ const Hero = () => {
               className="h-24 md:h-32 lg:h-40 w-auto mb-6 mx-auto"
             />
             
-            <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
+            <h2 className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-xl mx-auto">
               Distribuidora de produtos para Serigrafia e Comunicação Visual. 
               Mais de 15 anos de excelência atendendo Santa Maria e todo o Rio Grande do Sul.
             </h2>
@@ -42,7 +45,7 @@ const Hero = () => {
               </a>
               <a
                 href="#sobre"
-                className="inline-flex items-center justify-center gap-2 bg-foreground/5 text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-foreground/10 transition-all duration-300 border border-foreground/10"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition-all duration-300 border border-white/30"
               >
                 Conheça nossa história
               </a>
@@ -52,15 +55,15 @@ const Hero = () => {
             <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg mx-auto">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-primary">15+</div>
-                <div className="text-sm text-muted-foreground">Anos de experiência</div>
+                <div className="text-sm text-white/80">Anos de experiência</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-primary">RS</div>
-                <div className="text-sm text-muted-foreground">Todo o estado</div>
+                <div className="text-sm text-white/80">Todo o estado</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-primary">32+</div>
-                <div className="text-sm text-muted-foreground">Municípios atendidos</div>
+                <div className="text-sm text-white/80">Municípios atendidos</div>
               </div>
             </div>
           </div>
