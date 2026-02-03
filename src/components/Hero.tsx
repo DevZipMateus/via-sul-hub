@@ -13,7 +13,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl mx-auto text-center">
           {/* Content */}
           <div className="animate-fade-in">
             {/* H1 oculto visualmente para SEO e acessibilidade */}
@@ -23,14 +23,14 @@ const Hero = () => {
             <img
               src="/logo.png"
               alt="Via Sul Suprimentos Silk & Signs"
-              className="h-24 md:h-32 lg:h-40 w-auto mb-6"
+              className="h-24 md:h-32 lg:h-40 w-auto mb-6 mx-auto"
             />
             
-            <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
+            <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-xl mx-auto">
               Distribuidora de produtos para Serigrafia e Comunicação Visual. 
               Mais de 15 anos de excelência atendendo Santa Maria e todo o Rio Grande do Sul.
             </h2>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://wa.me/5555999999999"
                 target="_blank"
@@ -49,38 +49,18 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="mt-12 grid grid-cols-3 gap-6">
-              <div className="text-center sm:text-left">
+            <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg mx-auto">
+              <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-primary">15+</div>
                 <div className="text-sm text-muted-foreground">Anos de experiência</div>
               </div>
-              <div className="text-center sm:text-left">
+              <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-primary">RS</div>
                 <div className="text-sm text-muted-foreground">Todo o estado</div>
               </div>
-              <div className="text-center sm:text-left">
+              <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-primary">32+</div>
                 <div className="text-sm text-muted-foreground">Municípios atendidos</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Image/Visual */}
-          <div className="relative hidden lg:block animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 rounded-3xl transform rotate-6" />
-              <div className="relative bg-gradient-to-br from-primary to-accent p-1 rounded-3xl">
-                <div className="bg-background rounded-3xl p-8">
-                  <img
-                    src="/logo.png"
-                    alt="Via Sul Suprimentos Silk & Signs"
-                    className="w-full max-w-md mx-auto"
-                  />
-                  <div className="mt-6 text-center">
-                    <p className="text-lg font-semibold text-foreground">Suprimentos Silk & Signs</p>
-                    <p className="text-muted-foreground">Qualidade e confiança para seu negócio</p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
