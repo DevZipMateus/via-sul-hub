@@ -16,9 +16,16 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="animate-fade-in">
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-extrabold text-foreground mb-6 leading-tight">
-              Via Sul
-            </h1>
+            {/* H1 oculto visualmente para SEO e acessibilidade */}
+            <h1 className="sr-only">Via Sul - Suprimentos Silk & Signs</h1>
+            
+            {/* Logo visível no lugar do H1 */}
+            <img
+              src="/logo.png"
+              alt="Via Sul Suprimentos Silk & Signs"
+              className="h-24 md:h-32 lg:h-40 w-auto mb-6"
+            />
+            
             <h2 className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
               Distribuidora de produtos para Serigrafia e Comunicação Visual. 
               Mais de 15 anos de excelência atendendo Santa Maria e todo o Rio Grande do Sul.
