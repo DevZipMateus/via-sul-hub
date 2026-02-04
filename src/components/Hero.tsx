@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 import heroBackground from '@/assets/hero-background.jpg';
+import logoViaSul from '@/assets/logo-viasul.png';
 
 const Hero = () => {
   return (
@@ -24,7 +25,7 @@ const Hero = () => {
             
             {/* Logo visível no lugar do H1 */}
             <img
-              src="/logo.png"
+              src={logoViaSul}
               alt="Via Sul Suprimentos Silk & Signs"
               className="h-24 md:h-32 lg:h-40 w-auto mb-6 mx-auto"
             />
