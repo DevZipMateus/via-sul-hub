@@ -1,5 +1,6 @@
 import { Target, Eye, Heart, Users } from 'lucide-react';
 import aboutImage from '@/assets/about-image.jpg';
+import aboutBg from '@/assets/about-bg.jpg';
 
 const About = () => {
   const values = [
@@ -10,8 +11,19 @@ const About = () => {
   ];
 
   return (
-    <section id="sobre" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4">
+    <section 
+      id="sobre" 
+      className="py-20 md:py-28 relative overflow-hidden"
+    >
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${aboutBg})` }}
+      />
+      {/* Light overlay */}
+      <div className="absolute inset-0 bg-background/90" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-3">
