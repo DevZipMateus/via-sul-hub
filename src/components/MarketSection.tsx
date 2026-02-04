@@ -1,5 +1,6 @@
 import { Printer, Palette, MapPin, Building2, FileImage, Layers } from 'lucide-react';
 import marketImage from '@/assets/market-image.jpg';
+import marketBg from '@/assets/market-bg.jpg';
 
 const MarketSection = () => {
   const segments = [
@@ -12,8 +13,19 @@ const MarketSection = () => {
   ];
 
   return (
-    <section id="atuacao" className="py-20 md:py-28 bg-secondary">
-      <div className="container mx-auto px-4">
+    <section 
+      id="atuacao" 
+      className="py-20 md:py-28 relative overflow-hidden"
+    >
+      {/* Background image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${marketBg})` }}
+      />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-secondary/85" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-3">
