@@ -1,4 +1,5 @@
 import { Target, Eye, Heart, Users } from 'lucide-react';
+import aboutImage from '@/assets/about-image.jpg';
 
 const About = () => {
   const values = [
@@ -22,9 +23,25 @@ const About = () => {
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </div>
 
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
-          <div className="space-y-6">
+        {/* Main Content with Image */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+          {/* Image */}
+          <div className="relative order-2 lg:order-1">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+              <img 
+                src={aboutImage} 
+                alt="Processo de serigrafia - trabalho artesanal com telas e tintas" 
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            </div>
+            {/* Decorative element */}
+            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/20 rounded-2xl -z-10" />
+            <div className="absolute -top-4 -left-4 w-16 h-16 bg-primary/10 rounded-xl -z-10" />
+          </div>
+
+          {/* Text Content */}
+          <div className="space-y-6 order-1 lg:order-2">
             <p className="text-lg text-muted-foreground leading-relaxed">
               Somos uma empresa distribuidora de produtos para Serigrafia e Comunicação Visual, 
               com mais de 15 anos de atuação no mercado, atendendo Santa Maria e todo o estado 
@@ -43,31 +60,31 @@ const About = () => {
               nossos clientes a evoluírem e fortalecerem seus negócios.
             </p>
           </div>
+        </div>
 
-          {/* Mission & Vision Cards */}
-          <div className="space-y-6">
-            <div className="bg-secondary rounded-2xl p-6 border-l-4 border-primary">
-              <h3 className="font-display text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                <Target className="w-6 h-6 text-primary" />
-                Missão
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Fornecer suprimentos para os segmentos de Comunicação Visual, Serigrafia e Cobertura, 
-                garantindo soluções de qualidade aos nossos clientes. Atuar com segurança e credibilidade, 
-                valorizando nossos colaboradores e construindo relações comerciais sólidas.
-              </p>
-            </div>
+        {/* Mission & Vision Cards */}
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
+          <div className="bg-secondary rounded-2xl p-6 border-l-4 border-primary">
+            <h3 className="font-display text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+              <Target className="w-6 h-6 text-primary" />
+              Missão
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Fornecer suprimentos para os segmentos de Comunicação Visual, Serigrafia e Cobertura, 
+              garantindo soluções de qualidade aos nossos clientes. Atuar com segurança e credibilidade, 
+              valorizando nossos colaboradores e construindo relações comerciais sólidas.
+            </p>
+          </div>
 
-            <div className="bg-secondary rounded-2xl p-6 border-l-4 border-primary">
-              <h3 className="font-display text-xl font-bold text-foreground mb-3 flex items-center gap-2">
-                <Eye className="w-6 h-6 text-primary" />
-                Visão
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Ser reconhecida como a melhor empresa do interior do Rio Grande do Sul, destacando-se 
-                pela excelência no atendimento, qualidade dos produtos e eficiência logística.
-              </p>
-            </div>
+          <div className="bg-secondary rounded-2xl p-6 border-l-4 border-primary">
+            <h3 className="font-display text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+              <Eye className="w-6 h-6 text-primary" />
+              Visão
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Ser reconhecida como a melhor empresa do interior do Rio Grande do Sul, destacando-se 
+              pela excelência no atendimento, qualidade dos produtos e eficiência logística.
+            </p>
           </div>
         </div>
 

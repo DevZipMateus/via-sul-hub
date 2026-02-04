@@ -1,4 +1,5 @@
 import { Printer, Palette, MapPin, Building2, FileImage, Layers } from 'lucide-react';
+import marketImage from '@/assets/market-image.jpg';
 
 const MarketSection = () => {
   const segments = [
@@ -26,6 +27,25 @@ const MarketSection = () => {
             Atuamos no mercado de Comunicação Visual e Serigrafia, oferecendo suprimentos e soluções 
             para profissionais, empresas e indústrias que buscam qualidade, confiabilidade e performance.
           </p>
+        </div>
+
+        {/* Image Banner */}
+        <div className="relative rounded-2xl overflow-hidden shadow-xl mb-12">
+          <img 
+            src={marketImage} 
+            alt="Ambiente de trabalho de comunicação visual com impressora e materiais coloridos" 
+            className="w-full h-64 md:h-80 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent flex items-center">
+            <div className="p-8 md:p-12 max-w-lg">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                Soluções completas
+              </h3>
+              <p className="text-white/90">
+                Tudo que você precisa para serigrafia e comunicação visual em um só lugar.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Segments Grid */}
