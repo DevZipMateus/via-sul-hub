@@ -1,8 +1,18 @@
 import { Printer, Palette, MapPin, Building2, FileImage, Layers } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import marketImage from '@/assets/market-image.jpg';
 import marketBg from '@/assets/market-bg.jpg';
 
 const MarketSection = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+
   const segments = [
     { icon: Printer, title: 'Serigrafistas', description: 'Materiais de alta qualidade para impressão' },
     { icon: Palette, title: 'Gráficas', description: 'Suprimentos para produção gráfica' },
@@ -12,22 +22,51 @@ const MarketSection = () => {
     { icon: MapPin, title: 'Fachadas e banners', description: 'Lonas e materiais para fachadas' },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
     <section 
+      ref={ref}
       id="atuacao" 
       className="py-20 md:py-28 relative overflow-hidden"
     >
-      {/* Background image */}
-      <div 
+      {/* Parallax Background image */}
+      <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${marketBg})` }}
+        style={{ 
+          backgroundImage: `url(${marketBg})`,
+          y: backgroundY
+        }}
       />
       {/* Overlay */}
       <div className="absolute inset-0 bg-secondary/85" />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-3">
             Mercado de atuação
           </span>
@@ -39,61 +78,118 @@ const MarketSection = () => {
             Atuamos no mercado de Comunicação Visual e Serigrafia, oferecendo suprimentos e soluções 
             para profissionais, empresas e indústrias que buscam qualidade, confiabilidade e performance.
           </p>
-        </div>
+        </motion.div>
 
         {/* Image Banner */}
-        <div className="relative rounded-2xl overflow-hidden shadow-xl mb-12">
+        <motion.div 
+          className="relative rounded-2xl overflow-hidden shadow-xl mb-12 group"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <img 
             src={marketImage} 
             alt="Ambiente de trabalho de comunicação visual com impressora e materiais coloridos" 
-            className="w-full h-64 md:h-80 object-cover"
+            className="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent flex items-center">
-            <div className="p-8 md:p-12 max-w-lg">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex items-center">
+            <motion.div 
+              className="p-8 md:p-12 max-w-lg"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                 Soluções completas
               </h3>
               <p className="text-white/90">
                 Tudo que você precisa para serigrafia e comunicação visual em um só lugar.
               </p>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Segments Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <motion.div 
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {segments.map((segment, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-background rounded-2xl p-6 shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
+              className="bg-background rounded-2xl p-6 shadow-card hover:shadow-lg transition-all duration-300 group cursor-pointer"
+              variants={itemVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
             >
-              <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <motion.div 
+                className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
+              >
                 <segment.icon className="w-7 h-7 text-primary" />
-              </div>
+              </motion.div>
               <h3 className="font-display text-xl font-bold text-foreground mb-2">
                 {segment.title}
               </h3>
               <p className="text-muted-foreground">
                 {segment.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Coverage Area */}
-        <div className="bg-gradient-to-r from-primary to-accent rounded-3xl p-8 md:p-12 text-center text-primary-foreground">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <MapPin className="w-8 h-8" />
-            <h3 className="font-display text-2xl md:text-3xl font-bold">
-              Área de cobertura
-            </h3>
+        <motion.div 
+          className="bg-gradient-to-r from-primary to-accent rounded-3xl p-8 md:p-12 text-center text-primary-foreground overflow-hidden relative"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.02 }}
+        >
+          {/* Animated background shapes */}
+          <motion.div 
+            className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 180, 360]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.div 
+            className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              rotate: [360, 180, 0]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          />
+          
+          <div className="relative z-10">
+            <motion.div 
+              className="flex items-center justify-center gap-3 mb-4"
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", delay: 0.2 }}
+            >
+              <MapPin className="w-8 h-8" />
+              <h3 className="font-display text-2xl md:text-3xl font-bold">
+                Área de cobertura
+              </h3>
+            </motion.div>
+            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
+              Nossa atuação abrange Santa Maria e todo o estado do Rio Grande do Sul, 
+              com estrutura logística preparada para garantir agilidade, segurança e 
+              eficiência nas entregas.
+            </p>
           </div>
-          <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
-            Nossa atuação abrange Santa Maria e todo o estado do Rio Grande do Sul, 
-            com estrutura logística preparada para garantir agilidade, segurança e 
-            eficiência nas entregas.
-          </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
