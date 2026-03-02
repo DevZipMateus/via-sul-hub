@@ -1,9 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavClick = (href: string, isPage?: boolean) => {
+    setIsMobileMenuOpen(false);
+    if (isPage) {
+      navigate(href);
+    } else if (location.pathname !== '/') {
+      navigate('/' + href);
+    } else {
+      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +31,7 @@ const Header = () => {
     { label: 'Início', href: '#inicio' },
     { label: 'Sobre', href: '#sobre' },
     { label: 'Atuação', href: '#atuacao' },
+    { label: 'Vitrine', href: '/vitrine', isPage: true },
     { label: 'Contato', href: '#contato' },
   ];
 
@@ -42,13 +57,13 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.href}
-                href={item.href}
-                className="text-foreground font-medium hover:text-primary transition-colors duration-200"
+                onClick={() => handleNavClick(item.href, item.isPage)}
+                className="text-foreground font-medium hover:text-primary transition-colors duration-200 bg-transparent border-none cursor-pointer"
               >
                 {item.label}
-              </a>
+              </button>
             ))}
             <a
               href="https://wa.me/5555999999999"
@@ -78,14 +93,13 @@ const Header = () => {
         >
           <nav className="flex flex-col gap-4">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.href}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-foreground font-medium py-2 hover:text-primary transition-colors"
+                onClick={() => handleNavClick(item.href, item.isPage)}
+                className="text-foreground font-medium py-2 hover:text-primary transition-colors bg-transparent border-none cursor-pointer text-left"
               >
                 {item.label}
-              </a>
+              </button>
             ))}
             <a
               href="https://wa.me/5555999999999"

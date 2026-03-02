@@ -1,4 +1,5 @@
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import heroBackground from '@/assets/hero-background.jpg';
@@ -83,6 +84,13 @@ const Hero = () => {
               >
                 Conheça nossa história
               </a>
+              <Link
+                to="/vitrine"
+                className="inline-flex items-center justify-center gap-2 bg-white text-secondary px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/90 transition-all duration-300 shadow-lg hover:scale-105"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                Ver Vitrine
+              </Link>
             </motion.div>
 
             {/* Stats */}
