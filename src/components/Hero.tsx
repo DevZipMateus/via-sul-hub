@@ -86,7 +86,7 @@ const Hero = () => {
               </a>
               <Link
                 to="/vitrine"
-                className="inline-flex items-center justify-center gap-2 bg-white text-secondary px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/90 transition-all duration-300 shadow-lg hover:scale-105"
+                className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:scale-105"
               >
                 <ShoppingBag className="w-5 h-5" />
                 Ver Vitrine
