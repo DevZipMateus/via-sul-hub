@@ -1,4 +1,5 @@
-import { Printer, Palette, MapPin, Building2, FileImage, Layers } from 'lucide-react';
+import { Printer, Palette, MapPin, Building2, FileImage, Layers, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import marketImage from '@/assets/market-image.jpg';
@@ -143,7 +144,42 @@ const MarketSection = () => {
           ))}
         </motion.div>
 
-        {/* Coverage Area */}
+        {/* Vitrine Section */}
+        <motion.div 
+          className="bg-background rounded-3xl p-8 md:p-12 shadow-xl mb-12 overflow-hidden relative"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            <motion.div 
+              className="w-20 h-20 md:w-24 md:h-24 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0"
+              whileHover={{ rotate: 12, scale: 1.1 }}
+              transition={{ type: "spring" }}
+            >
+              <ShoppingBag className="w-10 h-10 md:w-12 md:h-12 text-primary" />
+            </motion.div>
+            <div className="text-center md:text-left flex-1">
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Conheça nossa Vitrine
+              </h3>
+              <p className="text-muted-foreground text-lg max-w-xl">
+                Explore nosso catálogo completo de produtos para serigrafia e comunicação visual. 
+                Tintas, solventes, substratos e muito mais!
+              </p>
+            </div>
+            <Link
+              to="/vitrine"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold text-lg hover:bg-accent transition-all duration-300 shadow-red hover:shadow-lg hover:scale-105 flex-shrink-0"
+            >
+              Acessar Vitrine
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </motion.div>
+
+
         <motion.div 
           className="bg-gradient-to-r from-primary to-accent rounded-3xl p-8 md:p-12 text-center text-primary-foreground overflow-hidden relative"
           initial={{ opacity: 0, y: 50 }}
