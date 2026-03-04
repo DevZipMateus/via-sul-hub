@@ -112,38 +112,6 @@ const MarketSection = () => {
           </div>
         </motion.div>
 
-        {/* Segments Grid */}
-        <motion.div 
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {segments.map((segment, index) => (
-            <motion.div
-              key={index}
-              className="bg-background rounded-2xl p-6 transition-all duration-300 group cursor-pointer"
-              variants={itemVariants}
-              whileHover={{ y: -8, scale: 1.02 }}
-            >
-              <motion.div 
-                className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-              >
-                <segment.icon className="w-7 h-7 text-primary" />
-              </motion.div>
-              <h3 className="font-display text-xl font-bold text-foreground mb-2">
-                {segment.title}
-              </h3>
-              <p className="text-muted-foreground">
-                {segment.description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Vitrine Section */}
         <motion.div 
           className="bg-background rounded-3xl p-8 md:p-12 shadow-xl mb-12 overflow-hidden relative"
