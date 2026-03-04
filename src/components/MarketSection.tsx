@@ -123,7 +123,7 @@ const MarketSection = () => {
           {segments.map((segment, index) => (
             <motion.div
               key={index}
-              className="bg-background rounded-2xl p-6 shadow-card hover:shadow-lg transition-all duration-300 group cursor-pointer"
+              className="bg-background rounded-2xl p-6 transition-all duration-300 group cursor-pointer"
               variants={itemVariants}
               whileHover={{ y: -8, scale: 1.02 }}
             >
