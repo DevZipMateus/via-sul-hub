@@ -115,7 +115,35 @@ const MarketSection = () => {
           </div>
         </motion.div>
 
-        {/* Vitrine Section */}
+        {/* Promo Images Gallery */}
+        <motion.div 
+          className="grid md:grid-cols-3 gap-6 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {[
+            { src: promoEntrega, alt: 'Via Sul - Entregamos em todo RS com os melhores preços' },
+            { src: promoLoja, alt: 'Via Sul - A maior loja online de produtos para silk e sign do RS' },
+            { src: promoProdutos, alt: 'Via Sul - Loja online com produtos para comunicação visual e serigrafia' },
+          ].map((img, index) => (
+            <motion.div
+              key={index}
+              className="rounded-2xl overflow-hidden shadow-xl group"
+              variants={itemVariants}
+              whileHover={{ scale: 1.03, y: -5 }}
+            >
+              <img 
+                src={img.src} 
+                alt={img.alt}
+                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+
         <motion.div 
           className="bg-background rounded-3xl p-8 md:p-12 shadow-xl mb-12 overflow-hidden relative"
           initial={{ opacity: 0, y: 50 }}
