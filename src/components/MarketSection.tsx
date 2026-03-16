@@ -212,6 +212,23 @@ const MarketSection = () => {
             </p>
           </div>
         </motion.div>
+
+        {/* Promo Entrega Image */}
+        <motion.div 
+          className="rounded-2xl overflow-hidden shadow-xl mt-12 max-w-lg mx-auto"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.03, y: -5 }}
+        >
+          <img 
+            src={promoEntrega} 
+            alt="Via Sul - Entregamos em todo RS com os melhores preços"
+            className="w-full h-auto object-cover"
+            loading="lazy"
+          />
+        </motion.div>
       </div>
     </section>
   );
