@@ -4,9 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import marketImage from '@/assets/market-image.jpg';
 import marketBg from '@/assets/market-bg.jpg';
-import promoEntrega from '@/assets/promo-entrega.png';
-import promoLoja from '@/assets/promo-loja.png';
-import promoProdutos from '@/assets/promo-produtos.png';
+import promoLojaOnline from '@/assets/promo-loja-online.png';
 
 const MarketSection = () => {
   const ref = useRef(null);
