@@ -4,9 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import marketImage from '@/assets/market-image.jpg';
 import marketBg from '@/assets/market-bg.jpg';
-import promoEntrega from '@/assets/promo-entrega.png';
-import promoLoja from '@/assets/promo-loja.png';
-import promoProdutos from '@/assets/promo-produtos.png';
+import promoLojaOnline from '@/assets/promo-loja-online.png';
 
 const MarketSection = () => {
   const ref = useRef(null);
@@ -115,33 +113,21 @@ const MarketSection = () => {
           </div>
         </motion.div>
 
-        {/* Promo Images Gallery */}
+        {/* Promo Image */}
         <motion.div 
-          className="grid md:grid-cols-3 gap-6 mb-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          className="rounded-2xl overflow-hidden shadow-xl mb-12 max-w-lg mx-auto"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.03, y: -5 }}
         >
-          {[
-            { src: promoEntrega, alt: 'Via Sul - Entregamos em todo RS com os melhores preços' },
-            { src: promoLoja, alt: 'Via Sul - A maior loja online de produtos para silk e sign do RS' },
-            { src: promoProdutos, alt: 'Via Sul - Loja online com produtos para comunicação visual e serigrafia' },
-          ].map((img, index) => (
-            <motion.div
-              key={index}
-              className="rounded-2xl overflow-hidden shadow-xl group"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -5 }}
-            >
-              <img 
-                src={img.src} 
-                alt={img.alt}
-                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-            </motion.div>
-          ))}
+          <img 
+            src={promoLojaOnline} 
+            alt="Via Sul - Loja online com produtos para comunicação visual e serigrafia"
+            className="w-full h-auto object-cover"
+            loading="lazy"
+          />
         </motion.div>
 
         <motion.div 
