@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import marketImage from '@/assets/market-image.jpg';
 import marketBg from '@/assets/market-bg.jpg';
 import promoLojaOnline from '@/assets/promo-loja-online.png';
+import promoEntrega from '@/assets/promo-entrega.png';
 
 const MarketSection = () => {
   const ref = useRef(null);
